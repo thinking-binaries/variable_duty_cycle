@@ -94,9 +94,33 @@ concept of a negative duty cycle for the vertical velocity.
 There were two bugs in the original code presentation, that have been fixed.
 
 
-# MPH to KPM conversion
+# MPH to KPH conversion
 
 WIP
+
+
+# TODO's
+
+* Move the sync_wait into a general timer class. This is a common time-horizon pattern
+that I want to share with other projects.
+
+* Implement the MPH to KPH conversion as a live duty cycle. This is another great example
+that I discussed years ago with John Thorn from AND Technology research.
+
+* Turn the VDC algorithm into a reusable parameterised Python class and create OO versions of 
+these examples that use that new class instance. A bit like the generic PID algorithm I wrote
+in Ada, when at University.
+
+* Investigate use of the VDC to synthesise musical tones. I'm particularly interested in this
+as an alternative method of polyphonic tone generation on the micro:bit, due to it's limited
+single-shared-period PWM implementation.
+
+David Whale
+
+@whaleygeek
+
+April 2017
+
 
 
 
