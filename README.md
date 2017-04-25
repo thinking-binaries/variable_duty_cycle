@@ -53,7 +53,7 @@ do forever
     duty_counter = duty_counter - duty_cycle
     if duty_counter is negative
         initiate_kickee_action
-        duty_counter = duty_counter + duty_aster
+        duty_counter = duty_counter + duty_master
     end if
 end do
 ```
