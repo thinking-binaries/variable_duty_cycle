@@ -85,12 +85,13 @@ generate two perfectly time synchronised ramps, with different amplitudes.
 
 # projectile example
 
-WIP
+Shows the calculation of a projectile fired from a start point with a given
+vertical and horizontal velocity.
 
-Note introduction of negative duty cycle concept for V direction
+Note there are two VDC instances in this algorithm, and it introduces the
+concept of a negative duty cycle for the vertical velocity.
 
-Note this uses two inter-linked VDC algorithms, one for the V direction, and one
-for the H direction.
+There were two bugs in the original code presentation, that have been fixed.
 
 
 # MPH to KPM conversion
