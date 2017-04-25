@@ -4,7 +4,7 @@ Experiments with VDC (Variable Duty Cycle)
 
 The Variable Duty Cycle algorithm is a beautifully simple but elegant
 general purpose algorithm. It's uses range from the generation of
-PWM signals, to graphics drawing routines, amongst many other uses.
+Analog signals, to graphics drawing routines, amongst many other uses.
 
 I first discovered this algorithm in a BYTE magazine in the early 1980's
 which is now usefully linked and archived in the internet archive here:
