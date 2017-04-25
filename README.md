@@ -85,6 +85,8 @@ generate two perfectly time synchronised ramps, with different amplitudes.
 
 # projectile example
 
+![plot](./projectile.png "Projectile plot")
+
 Shows the calculation of a projectile fired from a start point with a given
 vertical and horizontal velocity.
 
