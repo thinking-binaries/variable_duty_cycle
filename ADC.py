@@ -3,8 +3,6 @@
 # A Python implementation of the Variable Duty Cycle algorithm
 # implementing a simple analog to digital convertor.
 #
-# Essentially, this is a software PWM generator.
-#
 # Idea from:
 # https://archive.org/stream/byte-magazine-1981-10/1981_10_BYTE_06-10_Local_Networks#page/n389/mode/2up
 

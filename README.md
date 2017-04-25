@@ -77,7 +77,10 @@ As an illustration, use the following test values and observe the output stream 
 
 # ratio_match example
 
-WIP
+This shows how two values can be gradually increased from zero upwards, while
+maintaining a ratio between them. For example, if a max value was specified which
+caused both values to be reset to zero when one reaches a known maximum, this would
+generate two perfectly time synchronised ramps, with different amplitudes.
 
 
 # projectile example
