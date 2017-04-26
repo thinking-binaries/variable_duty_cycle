@@ -58,8 +58,13 @@ do forever
 end do
 ```
 
+There is a generic.py that shows a generic form in Python that can be used as a starting
+point for a simulator for any system.
+
 
 # ADC example
+
+file: ADC.py
 
 The ADC example shows how a PWM signal can be generated and sent to a digital output pin.
 Don't confuse the duty_master with the period, it's not really that. It is the ratio
@@ -75,7 +80,9 @@ As an illustration, use the following test values and observe the output stream 
 |100  |27     |27%   | 10010001000
 
 
-# ratio_match example
+# Ratio matching example
+
+file: ratio_match.py
 
 This shows how two values can be gradually increased from zero upwards, while
 maintaining a ratio between them. For example, if a max value was specified which
@@ -83,7 +90,9 @@ caused both values to be reset to zero when one reaches a known maximum, this wo
 generate two perfectly time synchronised ramps, with different amplitudes.
 
 
-# projectile example
+# Projectile plotting example
+
+file: projectile.py
 
 ![plot](./projectile.png "Projectile plot")
 
@@ -96,26 +105,37 @@ concept of a negative duty cycle for the vertical velocity.
 There were two bugs in the original code presentation, that have been fixed.
 
 
-# MPH to KPH conversion
+# Miles travelled to Kilometers travelled conversion
 
-WIP
+file:miles_to_kilometers.py
+
+This simulates an input circuit that sends a pulse when some fixed distance has
+been travelled. The internal ratio converter then counts these pulses and generates
+output pulses at a ratio affected rate that represents some multiple of kilometers
+travelled.
+
+This one is particularly tricky because the ratio is such that you have to travel
+a fraction of a mile to travel 1 kilometer. (kilometers to miles would be easier
+to model!). This is solved by scaling all the maths up by a factor of 10 in the 
+ratio, and scaling down the representable value at display, to enforce the requirement
+that the duty_cycle <= duty_master.
 
 
 # TODO's
 
+* Finish off generic.py based on improvements discovered in the miles_to_kilometers example.
+
 * Move the sync_wait into a general timer class. This is a common time-horizon pattern
 that I want to share with other projects.
-
-* Implement the MPH to KPH conversion as a live duty cycle. This is another great example
-that I discussed years ago with John Thorn from AND Technology research.
 
 * Turn the VDC algorithm into a reusable parameterised Python class and create OO versions of 
 these examples that use that new class instance. A bit like the generic PID algorithm I wrote
 in Ada, when at University.
 
 * Investigate use of the VDC to synthesise musical tones. I'm particularly interested in this
-as an alternative method of polyphonic tone generation on the micro:bit, due to it's limited
-single-shared-period PWM implementation.
+as an alternative way of generating modulated tones on small micro:controllers, 
+perhaps with some limited hardware assist via a simple hardware timing unit that effectively
+implements the VDC algorithm with some simple counters.
 
 David Whale
 
