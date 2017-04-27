@@ -123,8 +123,6 @@ that the duty_cycle <= duty_master.
 
 # TODO's
 
-* Finish off generic.py based on improvements discovered in the miles_to_kilometers example.
-
 * Move the sync_wait into a general timer class. This is a common time-horizon pattern
 that I want to share with other projects.
 

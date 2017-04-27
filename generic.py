@@ -4,10 +4,6 @@
 #
 # Use this as a template for other implementations
 
-#TODO: There are additional improvements in miles_to_kilometers that should be reflected here
-
-
-
 #initialise duty_master, duty_counter
 #    where duty_master > 0
 #    and   duty_counter >= 0
@@ -24,28 +20,43 @@
 #end do
 
 # PARAMETERS
-duty_master     = 100
-duty_cycle      = 95
-ACTION          = "quarter event"
-out_event_limit = 100
+duty_cycle      = 1609344
+prescale        = 10000
+IN              = "Mile"
+duty_master     = 10000000
+postscale       = 1000
+OUT             = "Kilometer"
+in_stop         = 1000000
+out_stop        = None
 
 # STATE
-cycle_no     = 0
-kicks        = 0
+in_count     = 0
+out_count    = 0
 duty_counter = 0
 
-def action(reason, cycle_no, kick_seq):
-    print("in#:%d out#%d %s" % (cycle_no, kick_seq, reason))
+def action(in_reason, in_count, in_value, out_reason, out_count, out_value):
+    print("%d (%f) * %s = %d (%f) * %s" % (in_count, in_value, in_reason, out_count, out_value, out_reason))
+    if in_stop  is not None and in_count  >= in_stop \
+    or out_stop is not None and out_count >= out_stop:
+        raise RuntimeError("STOP")
 
 print("Ratio: %d:%d" % (duty_cycle, duty_master))
 
-while kicks < out_event_limit:
-    cycle_no += 1
+while True:
+    in_count += 1
     duty_counter -= duty_cycle
     if duty_counter < 0:
-        kicks += 1
-        action(ACTION, cycle_no, kicks)
+        out_count += 1
         duty_counter += duty_master
+        action(IN, in_count, float(in_count)/prescale, OUT, out_count, float(out_count)/postscale)
+
+# END
+
+
+# END
+
+# END
+
 
 # END
 
