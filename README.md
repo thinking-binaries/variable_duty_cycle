@@ -123,8 +123,8 @@ that the duty_cycle <= duty_master.
 
 # TODO's
 
-* Move the sync_wait into a general timer class. This is a common time-horizon pattern
-that I want to share with other projects.
+* plot on the screen.py canvas the growth of the counter in each example,
+so that it is possible for people to visualise how the algorithm works
 
 * Turn the VDC algorithm into a reusable parameterised Python class and create OO versions of 
 these examples that use that new class instance. A bit like the generic PID algorithm I wrote
@@ -134,6 +134,9 @@ in Ada, when at University.
 as an alternative way of generating modulated tones on small micro:controllers, 
 perhaps with some limited hardware assist via a simple hardware timing unit that effectively
 implements the VDC algorithm with some simple counters.
+
+* Link in some work on general prescaler registers, and show how this overlaps with the VDC
+concept.
 
 David Whale
 

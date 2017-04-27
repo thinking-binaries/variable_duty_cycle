@@ -32,7 +32,7 @@
 # end
 # <decrease V by a fixed amount>
 
-import time
+from Timer import Timer
 
 try:
     ask = raw_input # python2
@@ -50,20 +50,9 @@ y                = 0     # y position of projectile
 
 LOOP_RATE        = None     # run the loop as fast as possible
 
-timer = None
+timer = Timer(LOOP_RATE)
 screen = None
 
-def sync_wait(rate_sec):
-    global timer
-
-    if rate_sec is None:
-        return
-
-    while True:
-        now = time.time()
-        if timer is None or now > timer:
-            timer = now + rate_sec
-            return
 
 def output(x,y):
     global screen
@@ -75,7 +64,7 @@ def output(x,y):
     screen.plot(x, screen.height - y)
 
 while y >= 0: # stop when projectile hits ground
-    sync_wait(LOOP_RATE)
+    timer.wait()
 
     # VDC#1 for x movement
     duty_counter_h -= duty_cycle_h

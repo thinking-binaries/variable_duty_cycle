@@ -35,7 +35,7 @@
 #    D := D + M
 # end
 
-import time
+from Timer import Timer
 
 duty_counter_1   = 0   # C
 duty_counter_2   = 0   # D
@@ -46,23 +46,14 @@ duty_cycle_2     = 100 # L
 duty_master      = 100 # M
 
 LOOP_RATE    = 1      # run the loop once per second
+timer = Timer(LOOP_RATE)
 
-timer = None
-
-def sync_wait(rate_sec):
-    global timer
-
-    while True:
-        now = time.time()
-        if timer is None or now > timer:
-            timer = now + rate_sec
-            return
 
 def output(a, b):
     print(a, b)
 
 while True:
-    sync_wait(LOOP_RATE)
+    timer.wait()
 
     # VDC#1
     duty_counter_1 -= duty_cycle_1

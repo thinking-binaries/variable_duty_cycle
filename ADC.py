@@ -17,29 +17,20 @@
 # 90 GOTO 30
 # 100 DATA 3.75
 
-import time
+from Timer import Timer
 
 duty_master  = 100    # number in line 70
 duty_cycle   = 27     # V
 duty_counter = 0      # C
 LOOP_RATE    = 1      # run the loop once per second
 
-timer = None
-
-def sync_wait(rate_sec):
-    global timer
-
-    while True:
-        now = time.time()
-        if timer is None or now > timer:
-            timer = now + rate_sec
-            return
+timer = Timer(LOOP_RATE)
 
 def output(b):
     print(b)
 
 while True:
-    sync_wait(LOOP_RATE)
+    timer.wait()
     bit = 0
     duty_counter -= duty_cycle
     if duty_counter < 0:
