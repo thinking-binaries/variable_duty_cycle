@@ -72,9 +72,12 @@ class Screen():
         #self.canvas.create_line(midx, top, midx, bottom)
         #self.update()
 
-    def goto(self, x, y):
+    def goto_xy(self, x, y):
         self.x = x
         self.y = y
+
+    def get_xy(self):
+        return (self.x, self.y)
 
     def plot(self, x, y, fill=None):
         if fill is None: fill = self.ON
@@ -88,7 +91,7 @@ class Screen():
 
     def line_to(self, x, y):
         if self.x is None or self.y is None:
-            self.goto(x, y)
+            self.goto_xy(x, y)
         else:
             self.line(self.x, self.y, x, y)
             self.x = x

@@ -57,13 +57,19 @@ def action(in_reason, in_count, in_value, out_reason, out_count, out_value):
 print("Ratio: %d:%d" % (duty_cycle, duty_master))
 
 def point(x, y):
-    screen.line_to(x*10, duty_master - y)
+    y = duty_master - y
+    x *= 10
+
+    screen.line_to(x, y)
+    screen.line_to(x-3, y)
+    screen.line_to(x+6, y)
+    screen.goto_xy(x, y)
 
 def draw_axies():
     LEN = 640
     screen.line(0, duty_master, LEN, duty_master) # actually the lower line
     screen.line(0, 4, LEN, 4) # actually the upper line
-    screen.goto(None, None)
+    screen.goto_xy(None, None)
 
 draw_axies()
 
