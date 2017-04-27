@@ -43,6 +43,8 @@ class Screen():
         self.canvas = self.create_canvas(width, height, left, top)
         self.width  = width
         self.height = height
+        self.x = None
+        self.y = None
 
     def start(self):
         self.canvas.my_window.update() # cause canvas to draw
@@ -70,11 +72,27 @@ class Screen():
         #self.canvas.create_line(midx, top, midx, bottom)
         #self.update()
 
+    def goto(self, x, y):
+        self.x = x
+        self.y = y
+
     def plot(self, x, y, fill=None):
         if fill is None: fill = self.ON
         self.canvas.create_rectangle(x, y, x, y, fill=fill)
         self.update()
 
+    def line(self, x1, y1, x2, y2):
+        self.canvas.create_line(x1, y1, x2, y2, fill=self.ON)
+        self.x = x2
+        self.y = y2
+
+    def line_to(self, x, y):
+        if self.x is None or self.y is None:
+            self.goto(x, y)
+        else:
+            self.line(self.x, self.y, x, y)
+            self.x = x
+            self.y = y
 
 #----- TEST HARNESS -----------------------------------------------------------
 

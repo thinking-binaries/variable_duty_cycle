@@ -36,6 +36,13 @@ be generated in the minimum required bitstream length. But don't confuse
 this with PWM with a fixed period - think of it as PWM with an optimal
 period required to generate that duty cycle given the LOOP_TIME.
 
+Here is a plot of the duty_counter with ratio 57:100.
+The top horizontal line is duty_master
+The bottom horizontal line is 0
+
+![plot](./57_100.png "Ratio Plot")
+
+
 
 # General form
 
@@ -122,9 +129,6 @@ that the duty_cycle <= duty_master.
 
 
 # TODO's
-
-* plot on the screen.py canvas the growth of the counter in each example,
-so that it is possible for people to visualise how the algorithm works
 
 * Turn the VDC algorithm into a reusable parameterised Python class and create OO versions of 
 these examples that use that new class instance. A bit like the generic PID algorithm I wrote
